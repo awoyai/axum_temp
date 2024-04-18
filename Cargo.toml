@@ -1,0 +1,7 @@
+[workspace]
+members = ["api", "bin", "config", "middleware", "service", "utils"]
+
+[workspace.dependencies]
+serde = "1"
+toml = "0"
+once_cell = "1"
