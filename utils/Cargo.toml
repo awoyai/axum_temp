@@ -6,3 +6,24 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+#
+config = { path = "../config" }
+# db = {path = "../db"}
+# 
+once_cell = { workspace = true, default-features = false }
+# 
+tokio = { workspace = true, default-features = false }
+# tracing
+tracing = { workspace = true, default-features = false }
+#
+anyhow = { workspace = true, default-features = false }
+
+#  随机数
+md5 = { workspace = true, default-features = false }
+rand = { workspace = true, default-features = false }
+
+tracing-subscriber = { workspace = true, default-features = false }
+time = { workspace = true }
+
+# sea-orm
+sea-orm = { workspace = true, default-features = false }

@@ -7,3 +7,19 @@ edition = "2021"
 
 [dependencies]
 config = { path = "../config" }
+utils = { path = "../utils" }
+tokio = { workspace = true, default-features = false, features = [
+    "rt-multi-thread",
+    "macros",
+    "parking_lot",
+    "signal",
+] }
+#
+tracing = { workspace = true, default-features = false }
+tracing-appender = { workspace = true, default-features = false }
+tracing-subscriber = { workspace = true, default-features = false, features = [
+    "json",
+    "env-filter",
+    "local-time",
+    "registry",
+] }
