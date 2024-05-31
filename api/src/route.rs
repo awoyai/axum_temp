@@ -1,4 +1,4 @@
-use axum::{routing::{get, post}, Router};
+use axum::{routing::get, Router};
 
 use crate::greet;
 
@@ -11,11 +11,9 @@ pub fn api() -> Router {
 }
 
 fn no_auth_api() -> Router {
-    Router::new()
-        .route("/ping", post(todo!())) // 登录
+    Router::new().route("/ping", get(greet::ping)) // 登录
 }
 
 fn set_auth_middleware(router: Router) -> Router {
-    let router = router.layer(todo!());
     router
 }

@@ -261,6 +261,8 @@ dependencies = [
 name = "bin"
 version = "0.1.0"
 dependencies = [
+ "api",
+ "axum",
  "config",
  "tokio",
  "tracing",

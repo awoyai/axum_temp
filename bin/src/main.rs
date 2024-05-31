@@ -1,6 +1,7 @@
 use config::CFG;
 use tracing_subscriber::{fmt, layer::SubscriberExt, EnvFilter, Registry};
 use utils::env::{self, RT};
+use axum::Router;
 
 fn main() {
     RT.block_on(async {
@@ -18,5 +19,8 @@ fn main() {
             // .with(console_layer)
             ;
         tracing::subscriber::set_global_default(logger).unwrap();
+        let app = Router::new().nest(&CFG.server.api_prefix, api::api());
+        let listener = tokio::net::TcpListener::bind(&CFG.server.address).await.unwrap();
+        axum::serve(listener, app).await.unwrap();
     })
 }

@@ -1,2 +1,4 @@
-mod route;
-mod greet;
+pub mod route;
+pub mod greet;
+
+pub use route::api;
