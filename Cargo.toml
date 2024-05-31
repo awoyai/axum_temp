@@ -1,5 +1,5 @@
 [workspace]
-members = ["api", "bin", "config", "middleware", "service", "utils"]
+members = ["api", "bin", "config", "middleware", "repo", "service", "utils"]
 
 [workspace.dependencies]
 # axum

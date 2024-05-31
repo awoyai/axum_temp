@@ -3,7 +3,7 @@ use tracing_subscriber::{fmt, layer::SubscriberExt, EnvFilter, Registry};
 use utils::env::{self, RT};
 
 fn main() {
-    let block_on = RT.block_on(async {
+    RT.block_on(async {
         let log_env = env::get_log_level();
         let format = env::get_log_format();
         // 文件输出
@@ -18,6 +18,5 @@ fn main() {
             // .with(console_layer)
             ;
         tracing::subscriber::set_global_default(logger).unwrap();
-      
-    });
+    })
 }

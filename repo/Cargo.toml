@@ -1,17 +1,20 @@
 [package]
-name = "service"
+name = "repo"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sysinfo = "0.30.10"
-repo = { path = "../repo" }
+tokio = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+mime = { workspace = true }
+serde_json = { workspace = true }
 axum = { workspace = true }
+config = { path = "../config" }
 sea-orm = { workspace = true, features = [
     "macros",
     "runtime-tokio-native-tls",
     "with-chrono",
 ] }
-anyhow = { workspace = true }
