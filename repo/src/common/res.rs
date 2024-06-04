@@ -18,6 +18,9 @@ pub struct Res<T> {
     pub data: Option<T>,
 }
 
+#[derive(Debug, Serialize, Default)]
+pub struct Empty {}
+
 #[derive(Debug, Clone)]
 pub struct ResJsonString(pub String);
 
@@ -73,6 +76,14 @@ impl<T: Serialize> Res<T> {
             code: Some(CODE_SUCCESS),
             msg: Some(MSG_SUCCESS.to_string()),
             data: Some(data),
+        }
+    }
+    #[allow(dead_code)]
+    pub fn with_data_msg(data: T, msg: &str) -> Self {
+        Self {
+            code: Some(200),
+            data: Some(data),
+            msg: Some(msg.to_string()),
         }
     }
 }

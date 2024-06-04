@@ -1,5 +1,6 @@
 use axum::extract::Query;
-use repo::common::res::CODE_FAIL_INTERNAL;
+use axum::http::HeaderMap;
+use repo::common::res::{Empty, CODE_FAIL_INTERNAL};
 use repo::greet::model::greeter::{GreeterInfo, GreeterReq};
 use repo::{
     common::res::Res,
@@ -18,6 +19,15 @@ pub async fn get_by_id(Query(req): Query<GreeterReq>) -> Res<GreeterInfo> {
     }
 }
 
-pub async fn ping(Query(_): Query<()>) -> Res<()> {
-    Res::default()
+pub async fn ping(Query(_): Query<()>, header: HeaderMap) -> Res<Empty> {
+    let a = match header.get("a") {
+        Some(v) => v.to_str().unwrap(),
+        None => "",
+    };
+    let b = match header.get("b") {
+        Some(v) => v.to_str().unwrap(),
+        None => "",
+    };
+    println!("{} {}", a, b);
+    Res::with_data_msg(Empty {}, "pong")
 }
